@@ -1,0 +1,32 @@
+.notifire {
+	/*position: fixed;*/
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 8px;
+	z-index: 9999;
+	margin: 5px;
+}
+
+.notifire {
+	text-align: center;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+}
+
+/* built in color scheme */
+.success {
+	background-color: #5cb85c;
+}
+
+.info {
+	background-color: #5bc0de;
+}
+
+.warning {
+	background-color: #f0ad4e;
+}
+
+.danger {
+	background-color: #d9534f;
+}
