@@ -14,7 +14,7 @@ function extend(obj1, obj2) {
 function notifire(config) {
 	// initialize default object
 	var defaults = {
-		type: 'info',
+		types: 'info',
 		width: 400,
 		height: 100,
 		position: 'right',
@@ -31,7 +31,6 @@ function notifire(config) {
 	if (defaults.width === '100%') {
 		defaults.width = screen.width;
 	}
-
 	// create message element and append to body
 	var div = document.createElement('div');
 	var p = document.createElement('p');
@@ -39,4 +38,25 @@ function notifire(config) {
 	p.innerHTML = defaults.msg;
 	div.appendChild(p);
 	document.body.appendChild(div);
+
+	div.className += ' ' + defaults.types;
+	div.style.width = defaults.width + 'px';
+	div.style.height = defaults.height + 'px';
+	var x = div.clientHeight; // request property that requires layout to force a layout
+	div.className += ' ease';
+
+	if (!isNaN(defaults.timeout)) {
+		notifireDismiss(div, defaults);
+
+	}
+}
+
+function notifireDismiss(div, defaults) {
+	setTimeout(function() {
+		console.log(div.className);
+		div.className = div.className.replace(' ease','');
+		setTimeout(function() {
+			document.body.removeChild(div);
+		}, 500);
+	}, defaults.timeout);
 }
