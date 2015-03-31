@@ -5,16 +5,14 @@
 	border-radius: 8px;
 	z-index: 9999;
 	margin: 5px;
+	text-align: center;
 }
 
 .notifire {
-	text-align: center;
 	font-size: 14px;
-	padding: 0;
-	margin: 0;
 	transition: transform 0.5s;
 	transform: translateX(0);
-	-webkit-transition: -webkit-transform 0.5s;
+	-webkit-transition: transform 0.5s;
 	-webkit-transform: translateX(-400px);
 }
 
@@ -39,3 +37,8 @@
 .danger {
 	background-color: #d9534f;
 }
+
+.default {
+	background-color: #dddddd;
+}
+

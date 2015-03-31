@@ -20,13 +20,51 @@
 <body id="body">
 	<div class="wrapper">
 		<button class="demo-btn" onclick="notifire1()">NotiFire!</button>
+		<button class="demo-btn" onclick="notifire2()">NotiFire!</button>
+		<button class="demo-btn" onclick="notifire3()">NotiFire!</button>
+		<button class="demo-btn" onclick="notifire4()">NotiFire!</button>
+		<button class="demo-btn" onclick="notifire5()">NotiFire!</button>
+		<button class="demo-btn" onclick="notifire6()">NotiFire!</button>
 	</div>
 </body>
 <script>
 function notifire1() {
 	notifire({
 		msg: 'aaaaa',
-		type: 'success'
+		types: 'success',
+		position: 'left'
+	});
+}
+function notifire2() {
+	notifire({
+		msg: 'aaaaa',
+		types: 'info',
+		position: 'right'
+	});
+}
+function notifire3() {
+	notifire({
+		msg: 'centered',
+		types: 'warning',
+		position: 'center'
+	});
+}
+function notifire4() {
+	notifire({
+		msg: 'aaaaa',
+		types: 'default'
+	});
+}
+function notifire5() {
+	notifire({
+		msg: 'aaaaa',
+		types: 'danger'
+	});
+}
+function notifire6() {
+	notifire({
+		msg: 'aaaaa',
+		types: 'success'
 	});
 }
 </script>

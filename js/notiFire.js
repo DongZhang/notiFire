@@ -10,13 +10,13 @@ function extend(obj1, obj2) {
 	}
 }
 
-// notifire function
+// notifire 
 function notifire(config) {
 	// initialize default object
 	var defaults = {
 		types: 'info',
-		width: 400,
-		height: 100,
+		width: 200,
+		height: 50,
 		position: 'right',
 		msg: 'This is message by default',
 		timeout: 5000,
@@ -39,18 +39,33 @@ function notifire(config) {
 	div.appendChild(p);
 	document.body.appendChild(div);
 
+	// modify notifire div
 	div.className += ' ' + defaults.types;
 	div.style.width = defaults.width + 'px';
 	div.style.height = defaults.height + 'px';
 	var x = div.clientHeight; // request property that requires layout to force a layout
 	div.className += ' ease';
+	switch(defaults.position) {
+		case 'right':
+			div.style['margin-left'] = window.innerWidth - defaults.width - 16 + 'px';
+			console.log(window.innerWidth);
+			break;
+		case 'left':
+			div.style['margin-left'] = '5px';
+			break;
+		case 'center':
+			div.style['margin-left'] = 'auto';
+			div.style['margin-right'] = 'auto';
+			break;
+	}
 
 	if (!isNaN(defaults.timeout)) {
 		notifireDismiss(div, defaults);
-
 	}
 }
 
+
+// dismiss notifire
 function notifireDismiss(div, defaults) {
 	setTimeout(function() {
 		console.log(div.className);
