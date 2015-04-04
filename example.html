@@ -1,70 +1,125 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>notiFire.js Example</title>
+	<title>notiFire.js Examples</title>
 	<style>
-	.wrapper {
+	body {
 		text-align: center;
 	}
 
-	.demo-btn {
-		width: 400px;
-		height: 50px;
-		text-align: center;
-		background-color: #5bc0de;
-		border: 2px solid #5cb85c;
+	.demo-div {
+		width: 600px;
+		height: auto;
+		text-align: left;
+		margin: 5px auto 5px auto;
+		padding-left: 10px;
+		background-color: #eee;
+		border-left: 5px solid #5cb85c;
+		white-space: pre-wrap;
+		cursor: pointer;
 	}
 	</style>
 	<link href="css/notiFire.css" type="text/css" rel="stylesheet">
 </head>
-<body id="body">
-	<div class="wrapper">
-		<button class="demo-btn" onclick="notifire1()">NotiFire!</button>
-		<button class="demo-btn" onclick="notifire2()">NotiFire!</button>
-		<button class="demo-btn" onclick="notifire3()">NotiFire!</button>
-		<button class="demo-btn" onclick="notifire4()">NotiFire!</button>
-		<button class="demo-btn" onclick="notifire5()">NotiFire!</button>
-		<button class="demo-btn" onclick="notifire6()">NotiFire!</button>
+<body>
+	<div>
+		<div class="demo-div" onclick="notifire1()">
+			<b>Basic Example:</b>
+			<code>
+notifire({
+	msg: 'this is a test message'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire2()">
+			<b>Choose the type: </b>
+			<code>
+notifire({
+	msg: 'Yeah!!! Success!!!',
+	types: 'success'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire3()">
+			<b>Any size you want:</b>
+			<code>
+notifire({
+	msg: 'this is a test message with width of 400px and height of 200px',
+	types: 'info',
+	width: 400,
+	height: 200
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire4()">
+			<b>Left or right?</b>
+			<code>
+notifire({
+	msg: 'I am on the right',
+	types: 'warning',
+	position: 'right'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire5()">
+			<b>When should I disappear?</b>
+			<code>
+notifire({
+	msg: 'I will be gone in 1 second!!!',
+	types: 'danger',
+	timeout: 1000
+});
+			</code>
+		</div>
 	</div>
 </body>
 <script>
 function notifire1() {
 	notifire({
-		msg: 'aaaaa',
-		types: 'success',
-		position: 'left'
+		msg: 'this is a test message'
 	});
 }
 function notifire2() {
 	notifire({
-		msg: 'aaaaa',
-		types: 'info',
-		position: 'right'
+		msg: 'Yeah!!! Success!!!',
+		types: 'success'
 	});
 }
 function notifire3() {
 	notifire({
-		msg: 'centered',
-		types: 'warning',
-		position: 'center'
+		msg: 'this is a test message with width of 400px and height of 200px',
+		types: 'info',
+		width: 400,
+		height: 200
 	});
 }
 function notifire4() {
 	notifire({
-		msg: 'aaaaa',
-		types: 'default'
+		msg: 'I am on the right',
+		types: 'warning',
+		position: 'right'
+	});
+}
+function notifire5() {
+	notifire({
+		msg: 'I will be gone in 1 second!!!',
+		types: 'danger',
+		timeout: 1000
 	});
 }
 function notifire5() {
 	notifire({
 		msg: 'aaaaa',
-		types: 'danger'
+		types: 'danger',
+		timeout: 1000
 	});
 }
 function notifire6() {
 	notifire({
 		msg: 'aaaaa',
-		types: 'success'
+		types: 'success',
+		width: 400,
+		height: 200
 	});
 }
 </script>

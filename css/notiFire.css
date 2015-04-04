@@ -1,24 +1,24 @@
+.notifire-frame {
+	position: fixed;
+	width: 0;
+	top: 0;
+	left: 0;
+}
+
 .notifire {
-	/*position: fixed;*/
 	cursor: pointer;
 	overflow: hidden;
 	border-radius: 8px;
 	z-index: 9999;
-	margin: 5px;
+	margin-bottom: 5px;
 	text-align: center;
+	font-size: 17px;
+	display: table;
 }
 
-.notifire {
-	font-size: 14px;
-	transition: transform 0.5s;
-	transform: translateX(0);
-	-webkit-transition: transform 0.5s;
-	-webkit-transform: translateX(-400px);
-}
-
-.notifire.ease {
-	transform: translateX(100px);
-	-webkit-transform: translateX(0px);
+.notifire span {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 /* built in color scheme */
