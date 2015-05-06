@@ -21,6 +21,10 @@ function notifire(config) {
 		types: 'default',
 		width: 200,
 		height: 50,
+		color: 'black',
+		borderStyle: 'solid',
+		borderWidth: 0,
+		borderColor: '#ddd',
 		position: 'left',
 		msg: 'This is message by default',
 		timeout: 5000
@@ -48,6 +52,7 @@ function notifire(config) {
 	div.className += ' ' + defaults.types;
 	div.style.width = defaults.width + 'px';
 	div.style.height = defaults.height + 'px';
+	div.style.color = defaults.color;
 	var x = div.clientHeight; // request property that requires layout to force a layout
 
 	// modify notifire div by customized position option
@@ -69,11 +74,25 @@ function notifire(config) {
 			break;
 	}
 
+	if (defaults.backgroundColor) {
+		div.style.backgroundColor = defaults.backgroundColor;
+	}
+	if (defaults.borderWidth !== 0) {
+		div.style['border-style'] = defaults.borderStyle;
+		div.style['border-width'] = defaults.borderWidth + 'px';
+	}
+	if (defaults.borderColor) {
+		div.style['border-color'] = defaults.borderColor;
+	}
+	if (defaults.opacity) {
+		div.style.opacity = defaults.opacity;
+	}
 	if (!isNaN(defaults.timeout)) {
 		notifireDismiss(div, defaults);
+	} else {
+		div.addEventListener('click', function() {notifireDismiss(div, defaults);});
 	}
 }
-
 
 // dismiss notifire
 function notifireDismiss(div, defaults) {

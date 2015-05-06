@@ -71,6 +71,57 @@ notifire({
 });
 			</code>
 		</div>
+		<div class="demo-div" onclick="notifire10()">
+			<b>I will not disappear</b>
+			<code>
+notifire({
+	msg: 'I will not disappear',
+	types: 'danger',
+	timeout: false
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire6()">
+			<b>Whatever color you need.</b>
+			<code>
+notifire({
+	msg: 'I am different than the others :)',
+	types: 'danger',
+	backgroundColor: 'red'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire7()">
+			<b>Customize your border:</b>
+			<code>
+notifire({
+	msg: 'Look! I have a border!',
+	types: 'danger',
+	backgroundColor: 'red'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire8()">
+			<b>Customize your content color:</b>
+			<code>
+notifire({
+	msg: 'Font color is up to you.',
+	types: 'danger',
+	backgroundColor: 'red'
+});
+			</code>
+		</div>
+	</div>
+	<div class="demo-div" onclick="notifire9()">
+			<b>Opacity is cool!</b>
+			<code>
+notifire({
+	msg: 'Opacity is cool!',
+	types: 'info',
+	opacity: 0.3
+});
+			</code>
+		</div>
 	</div>
 </body>
 <script>
@@ -107,19 +158,47 @@ function notifire5() {
 		timeout: 1000
 	});
 }
-function notifire5() {
-	notifire({
-		msg: 'aaaaa',
-		types: 'danger',
-		timeout: 1000
-	});
-}
 function notifire6() {
 	notifire({
-		msg: 'aaaaa',
+		msg: 'I am different than the others :)',
+		types: 'danger',
+		width: 300,
+		backgroundColor: 'red',
+		timeout: 5000
+	});
+}
+function notifire7() {
+	notifire({
+		msg: 'Look! I have a border!',
 		types: 'success',
-		width: 400,
-		height: 200
+		width: 300,
+		height: 100,
+		borderStyle: 'solid',
+		borderWidth: 5,
+		borderColor: '#33aaee'
+	});
+}
+function notifire8() {
+	notifire({
+		msg: 'Font color is up to you.',
+		types: 'danger',
+		color: 'white',
+		timeout: 5000
+	});
+}
+function notifire9() {
+	notifire({
+		msg: 'Opacity is cool',
+		types: 'info',
+		opacity: 0.3,
+		timeout: 5000
+	})
+}
+function notifire10() {
+	notifire({
+		msg: 'I will be gone in 1 second!!!',
+		types: 'danger',
+		timeout: 'false'
 	});
 }
 </script>
