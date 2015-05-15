@@ -1,8 +1,17 @@
 # notiFire
 notiFire is a simple library that providing message notification. No jQuery needed!!
 
-### Examples
-See example.html
+### Features
+&bull; customizable message content - of course
+
+&bull; customizable color - background / content 
+
+&bull; customizable size / border
+
+&bull; customizable opacity / position
+
+&bull; trigger callback when click on the message
+
 
 ### Usage
 ##### Simple message:
@@ -20,31 +29,31 @@ notifire({
 ```
 
 ##### Parameters
-<b>&bull; msg</b> - (string, required): the content of your message
+&bull; msg - (string, required): the content of your message
 
-<b>&bull; types</b> - (string): choose from 'success', 'info', 'warning', 'danger' or 'default'. Each type have a different background color
+&bull; types - (string): choose from 'success', 'info', 'warning', 'danger' or 'default'. Each type have a different background color
 
-<b>&bull; width</b> - (integer): width of the notificatoin message in px
+&bull; width - (integer): width of the notificatoin message in px
 
-<b>&bull; height</b> - (integer): height of the notificatoin message in px
+&bull; height - (integer): height of the notificatoin message in px
 
-<b>&bull; color</b> - (string): color of the text message, could be CSS default colors or hex colors
+&bull; color - (string): color of the text message, could be CSS default colors or hex colors
 
-<b>&bull; borderStyle</b> - (string): the border-style of the message div, should be valid border-style value
+&bull; borderStyle - (string): the border-style of the message div, should be valid border-style value
 
-<b>&bull; borderWidth</b> - (integer): border-width of the message div in px
+&bull; borderWidth - (integer): border-width of the message div in px
 
-<b>&bull; borderColor</b> - (string): the border-color of the message div, could be CSS default colors or hex colors
+&bull; borderColor - (string): the border-color of the message div, could be CSS default colors or hex colors
 
-<b>&bull; backgroundColor</b> - (string): the backgroudn-color of the message div, could be CSS default colors or hex colors
+&bull; backgroundColor - (string): the backgroudn-color of the message div, could be CSS default colors or hex colors
 
-<b>&bull; opacity</b> - (float): the opacity value of the message div
+&bull; opacity - (float): the opacity value of the message div
 
-<b>&bull; position</b> - (string): 'left' or 'right'
+&bull; position - (string): 'left' or 'right'
 
-<b>&bull; timeout</b> - (integer): how long do you need to display the message, in ms. 'false' if don't need auto-disappear
+&bull; timeout - (integer): how long do you need to display the message, in ms. 'false' if don't need auto-disappear
 
-<b>&bull; callback</b> - (function): the callback function to trigger when clicking the message to close it
+&bull; callback - (function): the callback function to trigger when clicking the message to close it
 
 ##### Full Example:
 ```
