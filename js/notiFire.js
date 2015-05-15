@@ -14,6 +14,18 @@ function extend(obj1, obj2) {
 	}
 }
 
+// helop function to test if a color is valid
+function testColor(color) {
+	var rgb = document.createElement('div');
+	rgb.style = 'color: #28e32a';    // Use a non standard dummy colour to ease checking for edge cases
+    var valid_rgb = "rgb(40, 227, 42)";
+    rgb.style = "color: " + color;
+    if(rgb.style['color'] == valid_rgb && color != ':#28e32a' && color.replace(/ /g,"") != valid_rgb.replace(/ /g,""))
+        return false;
+    else
+        return true;
+}
+
 // notifire 
 function notifire(config) {
 	// initialize default object
@@ -27,8 +39,58 @@ function notifire(config) {
 		borderColor: '#ddd',
 		position: 'left',
 		msg: 'This is message by default',
-		timeout: 5000
+		timeout: 5000,
+		callback: null
 	};
+
+	// check input config validation
+	for (prop in config) {
+		switch(prop) {
+			case 'types':
+				if (['success', 'info', 'warning', 'danger', 'default'].indexOf(config.types) === -1) console.error('invalid input types');
+				break;
+			case 'width':
+				if (typeof(config.width) !== 'number') console.error('invalid input width');
+				break;
+			case 'height':
+				if (typeof(config.height) !== 'number') console.error('invalid input height');
+				break;
+			case 'color':
+				if (!testColor(config.color)) console.error('invalid input color');
+				break;
+			case 'borderStyle':
+				if (['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset', 'initial', 'inherit'].indexOf(config.borderStyle) === -1) console.error('invalid input borderStyle');
+				break;
+			case 'borderWidth':
+				if (typeof(config.borderWidth) !== 'number') console.error('invalid input borderWidth');
+					break;
+			case 'borderColor':
+				if (!testColor(prop.borderColor)) console.error('invalid input color');
+				break;
+			case 'backgroundColor':
+				if (!testColor(config.backgroundColor)) console.error('invalid input color');
+				break;
+			case 'opacity':
+				if (typeof(config.opacity) !== 'number') console.error('invalid input opacity');
+				break;				
+			case 'position':
+				if (config.position !== 'left' && config.position !== 'right') console.error('invalid input position');
+				break;
+			case 'msg':
+				if (typeof(config.msg) !== 'string') console.error('invalid input msg');
+				break;
+			case 'timeout':
+				if (typeof(config.timeout) !== 'number' && config.timeout !== 'false') console.error('invalid input timeout');
+				break;
+			case 'callback':
+				if (typeof(config.callback) !== 'function' && config.callback !== null) console.error('invalid input callback');
+				break;
+			default:
+				console.error('invalid input');
+				break;
+		}
+	}
+	// extend defaults with config
 	extend(defaults, config);
 
 	// check other config options
@@ -87,6 +149,9 @@ function notifire(config) {
 	if (defaults.opacity) {
 		div.style.opacity = defaults.opacity;
 	}
+	if (defaults.callback !== null) {
+		defaults.timeout = 'false';
+	}
 	if (!isNaN(defaults.timeout)) {
 		notifireDismiss(div, defaults);
 	} else {
@@ -96,6 +161,9 @@ function notifire(config) {
 
 // dismiss notifire
 function notifireDismiss(div, defaults) {
+	if (defaults.callback !== null) {
+		defaults.callback();
+	}
 	setTimeout(function() {
 		div.style['transform'] = '';
 		div.style['-webkit-transform'] = '';
