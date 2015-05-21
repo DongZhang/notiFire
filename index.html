@@ -1,128 +1,332 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>notiFire by DongZhang</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">notiFire</h1>
-      <h2 class="project-tagline">A simple library providing message notification, no jQuery needed!</h2>
-      <a href="https://github.com/DongZhang/notiFire" class="btn">View on GitHub</a>
-      <a href="https://github.com/DongZhang/notiFire/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/DongZhang/notiFire/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h1>
-<a id="notifire" class="anchor" href="#notifire" aria-hidden="true"><span class="octicon octicon-link"></span></a>notiFire</h1>
-
-<p>notiFire is a simple library that providing message notification. No jQuery needed!!</p>
-
-<h3>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
-
-<p>• customizable message content - of course</p>
-
-<p>• customizable color - background / content </p>
-
-<p>• customizable size / border</p>
-
-<p>• customizable opacity / position</p>
-
-<p>• trigger callback when click on the message</p>
-
-<h3>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
-
-<h5>
-<a id="simple-message" class="anchor" href="#simple-message" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple message:</h5>
-
-<pre><code>// include notiFire.css in the head
-&lt;link href="css/notiFire.css" type="text/css" rel="stylesheet"&gt;
-
-// include notiFire.js at the end of body
-&lt;script src="js/notiFire.js" type="text/javascript"&gt;&lt;/script&gt;
-
-// there you go!
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>notiFire.js</title>
+	<style>
+	body {
+		margin: 0;
+	}
+	body h1 {
+		color: #555;
+		text-align: center;
+	}
+	.version {
+		font-size: 0.35em;
+	}
+	.top-info {
+		text-align: center;
+		color: #999;
+		font-size: 1em
+	}
+	.demo-header {
+		text-align: center;
+		background-color: #6D9197;
+		height: 1.7em;
+		color: white;
+		margin-bottom: 1em;
+		font-size: 1.4em;
+	}
+	.demo-div {
+		width: 600px;
+		height: auto;
+		text-align: left;
+		margin: 5px auto 5px auto;
+		padding-left: 10px;
+		background-color: #eee;
+		border: 1px solid #eee;
+		border-left: 5px solid #6D9197;
+		border-right: 1px solid #eee;
+		white-space: pre-wrap;
+		cursor: pointer;
+	}
+	.demo-div:hover {
+		border-style: solid;
+		border-width: 1px;
+		border-color: #6D9197;
+		border-left: 5px solid #6D9197;		
+		border-right: 1px solid #6D9197;
+	}
+	.demo-doc {
+		width: 600px;
+		height: auto;
+		text-align: left;
+		margin: 5px auto 5px auto;
+		padding-left: 10px;
+		background-color: #eee;
+		border-left: 5px solid #6D9197;
+	}
+	.demo-doc p {
+		margin: 5px;
+	}
+	.bottom-info {
+		text-align: center;
+		color: #999;
+		font-size: 1em
+	}
+	</style>
+	<link href="css/notiFire.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<h1>
+		notiFire
+		<span class="version">0.9</span>
+	</h1>
+	<div class="top-info">--- A simple message notification library</div>
+	<div class="demo-header">
+		<h2>Demos</h2>
+	</div>
+	<div>
+		<div class="demo-div" onclick="notifire1()">
+			<b>Basic Example:</b>
+			<code>
 notifire({
-    msg: 'this is a test message'
+	msg: 'this is a test message'
 });
-</code></pre>
-
-<h5>
-<a id="parameters" class="anchor" href="#parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters</h5>
-
-<p>• msg - (string, required): the content of your message</p>
-
-<p>• types - (string): choose from 'success', 'info', 'warning', 'danger' or 'default'. Each type have a different background color</p>
-
-<p>• width - (integer): width of the notificatoin message in px</p>
-
-<p>• height - (integer): height of the notificatoin message in px</p>
-
-<p>• color - (string): color of the text message, could be CSS default colors or hex colors</p>
-
-<p>• borderStyle - (string): the border-style of the message div, should be valid border-style value</p>
-
-<p>• borderWidth - (integer): border-width of the message div in px</p>
-
-<p>• borderColor - (string): the border-color of the message div, could be CSS default colors or hex colors</p>
-
-<p>• backgroundColor - (string): the backgroudn-color of the message div, could be CSS default colors or hex colors</p>
-
-<p>• opacity - (float): the opacity value of the message div</p>
-
-<p>• position - (string): 'left' or 'right'</p>
-
-<p>• timeout - (integer): how long do you need to display the message, in ms. 'false' if don't need auto-disappear</p>
-
-<p>• callback - (function): the callback function to trigger when clicking the message to close it</p>
-
-<h5>
-<a id="full-example" class="anchor" href="#full-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Full Example:</h5>
-
-<pre><code>notifire({
-    msg: 'See how callback is fired',
-    types: 'info',
-    width: 300,
-    height: 200,
-    color: 'white',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#33aaee',
-    backgroundColor: 'blue',
-    opacity: 0.5,
-    position: 'right',
-    timeout: 'false',
-    callback: function() { alert('callback after full-example has been triggered.'); }
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire2()">
+			<b>Choose the type</b>
+			<code>
+notifire({
+	msg: 'Yeah!!! Success!!!',
+	types: 'success'
 });
-</code></pre>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/DongZhang/notiFire">notiFire</a> is maintained by <a href="https://github.com/DongZhang">DongZhang</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-            <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-63022630-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
-  </body>
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire3()">
+			<b>Any size you wany</b>
+			<code>
+notifire({
+	msg: 'this is a test message with width of 400px and height of 200px',
+	types: 'info',
+	width: 400,
+	height: 200
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire4()">
+			<b>Left or right?</b>
+			<code>
+notifire({
+	msg: 'I am on the right',
+	types: 'warning',
+	position: 'right'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire5()">
+			<b>When should I disappear?</b>
+			<code>
+notifire({
+	msg: 'I will be gone in 1 second!!!',
+	types: 'danger',
+	timeout: 1000
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire10()">
+			<b>I will not disappear</b>
+			<code>
+notifire({
+	msg: 'I will not disappear',
+	types: 'danger',
+	timeout: false
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire6()">
+			<b>Whatever color you need.</b>
+			<code>
+notifire({
+	msg: 'I am different than the others :)',
+	types: 'danger',
+	backgroundColor: 'red'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire7()">
+			<b>Customize your border:</b>
+			<code>
+notifire({
+	msg: 'Look! I have a border!',
+	types: 'danger',
+	backgroundColor: 'red'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire8()">
+			<b>Customize your content color:</b>
+			<code>
+notifire({
+	msg: 'Font color is up to you.',
+	types: 'danger',
+	backgroundColor: 'red'
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire9()">
+			<b>Opacity is cool!</b>
+			<code>
+notifire({
+	msg: 'Opacity is cool!',
+	types: 'info',
+	opacity: 0.3
+});
+			</code>
+		</div>
+		<div class="demo-div" onclick="notifire11()">
+			<b>Callback</b>
+			<code>
+notifire({
+	msg: 'See how callback is fired',
+	types: 'info',
+	callabck: function() { alert('callback is fired!'); }
+});
+			</code>
+		</div>
+	</div>
+	<div class="demo-header">
+		<h2>Usage</h2>
+	</div>
+	<div class="demo-doc">
+		<b>Parameters:</b>
+		<p><b>&bull; msg</b> - (string, required): the content of your message</p>
+		<p><b>&bull; types</b> - (string): choose from 'success', 'info', 'warning', 'danger' or 'default'. Each type have a different background color.</p>
+		<p><b>&bull; width</b> - (integer): width of the notificatoin message in px</p>
+		<p><b>&bull; height</b> - (integer): height of the notificatoin message in px</p>
+		<p><b>&bull; color</b> - (string): color of the text message, could be CSS default colors or hex colors</p>
+		<p><b>&bull; borderStyle</b> - (string): the border-style of the message div, should be valid border-style value</p>
+		<p><b>&bull; borderWidth</b> - (integer): border-width of the message div in px</p>
+		<p><b>&bull; borderColor</b> - (string): the border-color of the message div, could be CSS default colors or hex colors</p>
+		<p><b>&bull; backgroundColor</b> - (string): the backgroudn-color of the message div, could be CSS default colors or hex colors</p>
+		<p><b>&bull; opacity</b> - (float): the opacity value of the message div</p>
+		<p><b>&bull; position</b> - (string): 'left' or 'right'</p>
+		<p><b>&bull; timeout</b> - (integer): how long do you need to display the message, in ms. 'false' if don't need auto-disappear</p>
+		<p><b>&bull; callback</b> - (function): the callback function to trigger when clicking the message to close it.</p>
+	</div>
+	<div class="demo-div" onclick="notifire12()">
+		<b>Full Example</b>
+		<code>
+notifire({
+	msg: 'See how callback is fired',
+	types: 'info',
+	width: 300,
+	height: 200,
+	color: 'white',
+	borderStyle: 'solid',
+	borderWidth: 1,
+	borderColor: '#33aaee',
+	backgroundColor: 'blue',
+	opacity: 0.5,
+	position: 'right',
+	timeout: 'false',
+	callback: function() { alert('callback after full-example has been triggered.'); }
+});
+		</code>
+	</div>
+	<div class="bottom-info">Developed by <a target="_blank"href="https://github.com/DongZhang">Dong</a> | Get it on <a target="_blank" href="https://github.com/DongZhang/notiFire">GitHub</a></div>
+</body>
+<script>
+function notifire1() {
+	notifire({
+		msg: 'this is a test message'
+	});
+}
+function notifire2() {
+	notifire({
+		msg: 'Yeah!!! Success!!!',
+		types: 'success'
+	});
+}
+function notifire3() {
+	notifire({
+		msg: 'this is a test message with width of 400px and height of 200px',
+		types: 'info',
+		width: 400,
+		height: 200
+	});
+}
+function notifire4() {
+	notifire({
+		msg: 'I am on the right',
+		types: 'warning',
+		position: 'right'
+	});
+}
+function notifire5() {
+	notifire({
+		msg: 'I will be gone in 1 second!!!',
+		types: 'danger',
+		timeout: 1000
+	});
+}
+function notifire6() {
+	notifire({
+		msg: 'I am different than the others :)',
+		types: 'danger',
+		width: 300,
+		backgroundColor: 'red',
+		timeout: 5000
+	});
+}
+function notifire7() {
+	notifire({
+		msg: 'Look! I have a border!',
+		types: 'success',
+		width: 300,
+		height: 100,
+		borderStyle: 'solid',
+		borderWidth: 5,
+		borderColor: '#33aaee'
+	});
+}
+function notifire8() {
+	notifire({
+		msg: 'Font color is up to you.',
+		types: 'danger',
+		color: 'white',
+		timeout: 5000
+	});
+}
+function notifire9() {
+	notifire({
+		msg: 'Opacity is cool',
+		types: 'info',
+		opacity: 0.3,
+		timeout: 5000
+	})
+}
+function notifire10() {
+	notifire({
+		msg: 'I will not disappear unless you click me.',
+		types: 'danger',
+		timeout: 'false'
+	});
+}
+function notifire11() {
+	notifire({
+		msg: 'See how callback is fired',
+		types: 'info',
+		callback: function() { alert('callback is fired!'); }
+	});
+}
+function notifire12() {
+	notifire({
+		msg: 'See how callback is fired',
+		types: 'info',
+		width: 300,
+		height: 200,
+		color: 'white',
+		borderStyle: 'solid',
+		borderWidth: 1,
+		borderColor: '#33aaee',
+		backgroundColor: 'blue',
+		opacity: 0.5,
+		position: 'right',
+		timeout: 'false',
+		callback: function() { alert('callback after full-example has been triggered.'); }
+	});
+}
+</script>
+<script src="js/notiFire.js" type="text/javascript"></script>
 </html>
-
