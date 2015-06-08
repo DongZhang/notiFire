@@ -1,6 +1,8 @@
 # notiFire
 notiFire is a simple library that providing message notification. No jQuery needed!!
 
+view [demo](http://dongzhang.github.io/notiFire/)
+
 ### Features
 &bull; customizable message content - of course
 
