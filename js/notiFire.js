@@ -3,19 +3,22 @@
  * by @dongzhang
  */
 
-var wrapper = document.createElement('div');
-wrapper.className = 'notifire-frame';
-document.body.appendChild(wrapper);
+function notiFire() {
+	this.wrapper = document.createElement('div');
+	this.wrapper.className = 'notifire-frame';
+	document.body.appendChild(this.wrapper);
+}
+
 
 // helper function to extend obj1 by obj2
-function extend(obj1, obj2) {
+notiFire.prototype.extend = function(obj1, obj2) {
 	for (var property in obj2) {
 		obj1[property] = obj2[property];
 	}
 }
 
-// helop function to test if a color is valid
-function testColor(color) {
+// help function to test if a color is valid
+notiFire.prototype.testColor = function(color) {
 	var rgb = document.createElement('div');
 	rgb.style = 'color: #28e32a';    // Use a non standard dummy colour to ease checking for edge cases
     var valid_rgb = "rgb(40, 227, 42)";
@@ -27,7 +30,7 @@ function testColor(color) {
 }
 
 // notifire 
-function notifire(config) {
+notiFire.prototype.create = function(config) {
 	// initialize default object
 	var defaults = {
 		types: 'default',
@@ -56,7 +59,7 @@ function notifire(config) {
 				if (typeof(config.height) !== 'number') console.error('invalid input height');
 				break;
 			case 'color':
-				if (!testColor(config.color)) console.error('invalid input color');
+				if (!this.testColor(config.color)) console.error('invalid input color');
 				break;
 			case 'borderStyle':
 				if (['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset', 'initial', 'inherit'].indexOf(config.borderStyle) === -1) console.error('invalid input borderStyle');
@@ -65,10 +68,10 @@ function notifire(config) {
 				if (typeof(config.borderWidth) !== 'number') console.error('invalid input borderWidth');
 					break;
 			case 'borderColor':
-				if (!testColor(prop.borderColor)) console.error('invalid input color');
+				if (!this.testColor(prop.borderColor)) console.error('invalid input color');
 				break;
 			case 'backgroundColor':
-				if (!testColor(config.backgroundColor)) console.error('invalid input color');
+				if (!this.testColor(config.backgroundColor)) console.error('invalid input color');
 				break;
 			case 'opacity':
 				if (typeof(config.opacity) !== 'number') console.error('invalid input opacity');
@@ -91,7 +94,7 @@ function notifire(config) {
 		}
 	}
 	// extend defaults with config
-	extend(defaults, config);
+	this.extend(defaults, config);
 
 	// check other config options
 	if (typeof defaults.callback !== 'function') {
@@ -108,7 +111,7 @@ function notifire(config) {
 	div.className = 'notifire';
 	span.innerHTML = defaults.msg;
 	div.appendChild(span);
-	wrapper.appendChild(div);
+	this.wrapper.appendChild(div);
 
 	// modify notifire div by config
 	div.className += ' ' + defaults.types;
@@ -153,17 +156,20 @@ function notifire(config) {
 		defaults.timeout = 'false';
 	}
 	if (!isNaN(defaults.timeout)) {
-		notifireDismiss(div, defaults);
+		this.dismiss(div, defaults);
 	} else {
-		div.addEventListener('click', function() {notifireDismiss(div, defaults);});
+		div.addEventListener('click', function() {
+			this.dismiss(div, defaults);
+		}.bind(this, false));
 	}
 }
 
 // dismiss notifire
-function notifireDismiss(div, defaults) {
+notiFire.prototype.dismiss = function(div, defaults) {
 	if (defaults.callback !== null) {
 		defaults.callback();
 	}
+	var wrapper = this.wrapper;
 	setTimeout(function() {
 		div.style['transform'] = '';
 		div.style['-webkit-transform'] = '';
@@ -172,3 +178,5 @@ function notifireDismiss(div, defaults) {
 		}, 500);
 	}, defaults.timeout);
 }
+
+console.log('a', notiFire.prototype);

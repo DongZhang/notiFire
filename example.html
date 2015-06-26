@@ -226,20 +226,23 @@ notifire({
 	</div>
 	<div class="bottom-info">Developed by <a target="_blank"href="https://github.com/DongZhang">Dong</a> | Get it on <a target="_blank" href="https://github.com/DongZhang/notiFire">GitHub</a></div>
 </body>
+
+<script src="js/notiFire.js" type="text/javascript"></script>
 <script>
+var notiFire = new notiFire();
 function notifire1() {
-	notifire({
+	notiFire.create({
 		msg: 'this is a test message'
 	});
 }
 function notifire2() {
-	notifire({
+	notiFire.create({
 		msg: 'Yeah!!! Success!!!',
 		types: 'success'
 	});
 }
 function notifire3() {
-	notifire({
+	notiFire.create({
 		msg: 'this is a test message with width of 400px and height of 200px',
 		types: 'info',
 		width: 400,
@@ -247,21 +250,21 @@ function notifire3() {
 	});
 }
 function notifire4() {
-	notifire({
+	notiFire.create({
 		msg: 'I am on the right',
 		types: 'warning',
 		position: 'right'
 	});
 }
 function notifire5() {
-	notifire({
+	notiFire.create({
 		msg: 'I will be gone in 1 second!!!',
 		types: 'danger',
 		timeout: 1000
 	});
 }
 function notifire6() {
-	notifire({
+	notiFire.create({
 		msg: 'I am different than the others :)',
 		types: 'danger',
 		width: 300,
@@ -270,7 +273,7 @@ function notifire6() {
 	});
 }
 function notifire7() {
-	notifire({
+	notiFire.create({
 		msg: 'Look! I have a border!',
 		types: 'success',
 		width: 300,
@@ -281,7 +284,7 @@ function notifire7() {
 	});
 }
 function notifire8() {
-	notifire({
+	notiFire.create({
 		msg: 'Font color is up to you.',
 		types: 'danger',
 		color: 'white',
@@ -289,7 +292,7 @@ function notifire8() {
 	});
 }
 function notifire9() {
-	notifire({
+	notiFire.create({
 		msg: 'Opacity is cool',
 		types: 'info',
 		opacity: 0.3,
@@ -297,21 +300,21 @@ function notifire9() {
 	})
 }
 function notifire10() {
-	notifire({
+	notiFire.create({
 		msg: 'I will not disappear unless you click me.',
 		types: 'danger',
 		timeout: 'false'
 	});
 }
 function notifire11() {
-	notifire({
+	notiFire.create({
 		msg: 'See how callback is fired',
 		types: 'info',
 		callback: function() { alert('callback is fired!'); }
 	});
 }
 function notifire12() {
-	notifire({
+	notiFire.create({
 		msg: 'See how callback is fired',
 		types: 'info',
 		width: 300,
@@ -328,5 +331,4 @@ function notifire12() {
 	});
 }
 </script>
-<script src="js/notiFire.js" type="text/javascript"></script>
 </html>
