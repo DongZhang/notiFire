@@ -1,5 +1,5 @@
 /*
- * notiFire 
+ * notiFire
  * by @dongzhang
  */
 
@@ -26,7 +26,7 @@ function testColor(color) {
         return true;
 }
 
-// notifire 
+// notifire
 function notifire(config) {
 	// initialize default object
 	var defaults = {
@@ -72,7 +72,7 @@ function notifire(config) {
 				break;
 			case 'opacity':
 				if (typeof(config.opacity) !== 'number') console.error('invalid input opacity');
-				break;				
+				break;
 			case 'position':
 				if (config.position !== 'left' && config.position !== 'right') console.error('invalid input position');
 				break;
@@ -153,7 +153,7 @@ function notifire(config) {
 		defaults.timeout = 'false';
 	}
 	if (!isNaN(defaults.timeout)) {
-		notifireDismiss(div, defaults);
+		var timeout = notifireDismiss(div, defaults);
 	}
 	div.addEventListener('click', function() {
 		if (timeout){
@@ -169,11 +169,12 @@ function notifireDismiss(div, defaults) {
 	if (defaults.callback !== null) {
 		defaults.callback();
 	}
-	setTimeout(function() {
+	var timeout = setTimeout(function() {
 		div.style['transform'] = '';
 		div.style['-webkit-transform'] = '';
 		setTimeout(function() {
 			wrapper.removeChild(div);
 		}, 500);
 	}, defaults.timeout);
+	return timeout;
 }
