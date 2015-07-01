@@ -154,9 +154,14 @@ function notifire(config) {
 	}
 	if (!isNaN(defaults.timeout)) {
 		notifireDismiss(div, defaults);
-	} else {
-		div.addEventListener('click', function() {notifireDismiss(div, defaults);});
 	}
+	div.addEventListener('click', function() {
+		if (timeout){
+			clearTimeout(timeout);
+		}
+		defaults.timeout = 0;
+		notifireDismiss(div, defaults);
+	});
 }
 
 // dismiss notifire
